@@ -10,6 +10,8 @@ set selection=inclusive
 set wildmenu
 set mousemodel=popup
 
+let g:pyflakes_prefer_python_version = 3
+
 au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
 au FileType css setlocal dict+=~/.vim/dict/css.dict
 au FileType c setlocal dict+=~/.vim/dict/c.dict
@@ -154,8 +156,9 @@ func SetTitle()
 		call append(line(".")+8, "#endif")
 	endif
 	if &filetype == 'java'
-		call append(line(".")+6,"public class ".expand("%:r"))
-		call append(line(".")+7,"")
+		call append(line(".")+6,"public class ".expand("%:r")." {")
+		call append(line(".")+7, "")
+		call append(line(".")+8,"}")
 	endif
 	"新建文件后，自动定位到文件末尾
 endfunc 
@@ -205,7 +208,7 @@ func! CompileRunGcc()
 		exec "!g++ % -o %<"
 		exec "!time ./%<"
 	elseif &filetype == 'cpp'
-		exec "!g++ % -o %<"
+		exec "!g++ % -std=c++11 -o %<"
 		exec "!time ./%<"
 	elseif &filetype == 'java' 
 		exec "!javac %" 
@@ -228,7 +231,7 @@ endfunc
 map <F8> :call Rungdb()<CR>
 func! Rungdb()
 	exec "w"
-	exec "!g++ % -g -o %<"
+	exec "!g++ % -std=c++11 -g -o %<"
 	exec "!gdb ./%<"
 endfunc
 

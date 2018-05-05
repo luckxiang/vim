@@ -20,6 +20,7 @@ au FileType scale setlocal dict+=~/.vim/dict/scale.dict
 au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
 au FileType html setlocal dict+=~/.vim/dict/javascript.dict
 au FileType html setlocal dict+=~/.vim/dict/css.dict
+au FileType java setlocal dict+=~/.vim/dict/java.dict
 
 "
 "syntastic相关
@@ -375,7 +376,7 @@ set autochdir
 "其他东东
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "默认打开Taglist 
-let Tlist_Auto_Open=0 
+let Tlist_Auto_Open=1
 """""""""""""""""""""""""""""" 
 " Tag list (ctags) 
 """""""""""""""""""""""""""""""" 
